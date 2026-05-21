@@ -335,6 +335,54 @@ html { overflow-x: hidden; }
 .quiz-step-screen { display: none; }
 .quiz-step-screen.active { display: block; }
 
+/* Success state */
+.success-content {
+  text-align: center;
+  padding: 16px 20px 24px;
+}
+.success-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fe634e 0%, #ff8a72 100%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  color: #fff;
+  box-shadow: 0 10px 28px rgba(254, 99, 78, 0.32);
+  animation: success-pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.success-icon svg {
+  width: 36px;
+  height: 36px;
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation: success-check 0.5s ease-out 0.35s forwards;
+}
+.success-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 12px;
+  letter-spacing: -0.2px;
+}
+.success-subtitle {
+  font-size: 15px;
+  color: #6b6b6b;
+  line-height: 1.55;
+  max-width: 420px;
+  margin: 0 auto;
+}
+@keyframes success-pop {
+  0%   { transform: scale(0.3); opacity: 0; }
+  60%  { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes success-check {
+  to { stroke-dashoffset: 0; }
+}
+
 /* Phone input step */
 .phone-input-wrap {
   display: flex;
@@ -636,8 +684,14 @@ html { overflow-x: hidden; }
 
         <!-- Success -->
         <div class="quiz-step-screen" id="step-success">
-          <div class="quiz-question" style="text-align:center; padding: 20px 0;">
-            ✅ Спасибо! Мы свяжемся с вами в ближайшее время.
+          <div class="success-content">
+            <div class="success-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <div class="success-title">Заявка отправлена</div>
+            <div class="success-subtitle">Свяжемся с вами в течение 15 минут и расскажем, сколько клиентов получите в первую неделю.</div>
           </div>
         </div>
 
