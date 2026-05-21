@@ -1,0 +1,16 @@
+.claude/
+.playwright-mcp/
+*.txt
+mobile-*.png
+photo-*.png
+pills-*.png
+final-*.png
+current-state.png
+my-page-*.png
+original-page.png
+page-*.png
+photo-shift.png
+photo-fix.png
+photo-fixed.png
+photo-no-crop.png
+photo-bigger-left.png

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>+10~15 целевых заявок в день на установку септиков</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #fff; overflow-x: hidden; }
+html { overflow-x: hidden; }
+
+/* ===== HERO SECTION ===== */
+.section-hero {
+  position: relative;
+  height: 540px;
+  background-color: #fff;
+  overflow: visible;
+}
+.el { position: absolute; }
+
+/* Top bar bg */
+.s1-topbar-bg {
+  top: 23px;
+  left: calc(50% - 379px);
+  width: 761px;
+  height: 40px;
+  background-color: #f9f7f7;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+/* Main card bg */
+.s1-card-bg {
+  top: 85px;
+  left: calc(50% - 380px);
+  width: 760px;
+  height: 402px;
+  background-color: #f9f7f7;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+/* Top bar text */
+.s1-topbar-text {
+  top: 30px;
+  left: calc(50% - 339px);
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  line-height: 1.3;
+  z-index: 3;
+  white-space: nowrap;
+}
+
+/* Main title */
+.s1-title {
+  top: 106px;
+  left: calc(50% - 339px);
+  width: 528px;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 33px;
+  z-index: 3;
+}
+
+/* Feature card 1 */
+.s1-fc1 {
+  top: 240px;
+  left: calc(50% - 339px);
+  width: 442px;
+  height: 68px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(45,45,45,0.2);
+  z-index: 3;
+}
+.s1-fi1 {
+  top: 256px;
+  left: calc(50% - 322px);
+  width: 36px;
+  z-index: 4;
+}
+.s1-fi1 img { width: 100%; display: block; opacity: 0.8; }
+.s1-ft1 {
+  top: 252px;
+  left: calc(50% - 274px);
+  width: 301px;
+  font-size: 14px;
+  color: #464646;
+  line-height: 1.3;
+  z-index: 4;
+}
+
+/* Feature card 2 */
+.s1-fc2 {
+  top: 316px;
+  left: calc(50% - 337px);
+  width: 442px;
+  height: 68px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(45,45,45,0.2);
+  z-index: 3;
+}
+.s1-fi2 {
+  top: 332px;
+  left: calc(50% - 320px);
+  width: 36px;
+  z-index: 4;
+}
+.s1-fi2 img { width: 100%; display: block; }
+.s1-ft2 {
+  top: 328px;
+  left: calc(50% - 272px);
+  width: 266px;
+  font-size: 14px;
+  color: #464646;
+  line-height: 1.3;
+  z-index: 4;
+}
+
+/* Feature card 3 */
+.s1-fc3 {
+  top: 391px;
+  left: calc(50% - 337px);
+  width: 442px;
+  height: 68px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(45,45,45,0.2);
+  z-index: 3;
+}
+.s1-fi3 {
+  top: 407px;
+  left: calc(50% - 320px);
+  width: 36px;
+  z-index: 4;
+}
+.s1-fi3 img { width: 100%; display: block; }
+.s1-ft3 {
+  top: 403px;
+  left: calc(50% - 272px);
+  width: 304px;
+  font-size: 14px;
+  color: #464646;
+  line-height: 1.3;
+  z-index: 4;
+}
+
+/* Photo */
+.s1-photo {
+  top: 155px;
+  left: calc(50% + 105px);
+  width: 267px;
+  height: 332px;
+  overflow: hidden;
+  z-index: 4;
+}
+.s1-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* CTA text */
+.s1-cta {
+  top: 505px;
+  left: calc(50% - 380px);
+  width: 762px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 23px;
+  color: #333;
+  z-index: 3;
+}
+
+/* ===== QUIZ SECTION ===== */
+.section-quiz {
+  background: #fff;
+  padding: 20px 0 40px;
+}
+.quiz-col {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.quiz-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.12);
+  overflow: hidden;
+}
+.quiz-header {
+  background: #fff;
+  height: 16px;
+}
+.quiz-progressbar-wrap {
+  background: rgba(254,99,78,0.20);
+  height: 6px;
+}
+.quiz-progress {
+  background: rgb(254, 99, 78);
+  height: 6px;
+  width: 25%;
+  transition: width 0.3s;
+}
+.quiz-content {
+  padding: 32px 40px 24px;
+}
+.quiz-question {
+  font-size: 22px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+.quiz-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+}
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #333;
+  padding: 6px 0;
+  user-select: none;
+}
+.quiz-option input[type="radio"] { display: none; }
+.radio-ind {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #fe634e;
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  transition: border-color 0.2s;
+}
+.quiz-option input:checked ~ .radio-ind::after {
+  content: '';
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 10px; height: 10px;
+  background: #fe634e;
+  border-radius: 50%;
+}
+.quiz-option:hover .radio-ind { border-color: #e0402a; }
+
+.quiz-footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 40px;
+  border-top: 1px solid #f0f0f0;
+}
+.quiz-step-label {
+  font-size: 14px;
+  color: #aaa;
+  font-family: Arial, sans-serif;
+}
+.quiz-nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-prev {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bbb;
+  font-size: 16px;
+}
+@keyframes shimmer-slide {
+  0%   { left: -80%; }
+  12%  { left: 130%; }
+  100% { left: 130%; }
+}
+.btn-next {
+  position: relative;
+  overflow: hidden;
+  background: #fe634e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 32px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 14px rgba(254, 99, 78, 0.4);
+}
+.btn-next::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -80%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.38) 50%, transparent 100%);
+  animation: shimmer-slide 10s ease-in-out infinite;
+}
+.btn-next:hover { filter: brightness(1.08); }
+
+/* Quiz steps (hidden by default) */
+.quiz-step-screen { display: none; }
+.quiz-step-screen.active { display: block; }
+
+/* Phone input step */
+.phone-input-wrap {
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.phone-flag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 12px;
+  font-size: 15px;
+  color: #333;
+  border-right: 1px solid #e0e0e0;
+  white-space: nowrap;
+}
+.phone-input {
+  border: none;
+  background: transparent;
+  padding: 12px 12px;
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  flex: 1;
+  outline: none;
+}
+
+/* ===== FOOTER ===== */
+.section-footer {
+  position: relative;
+  height: 150px;
+  background-color: #f4f4f4;
+}
+.footer-name {
+  position: absolute;
+  top: 28px;
+  left: calc(50% - 380px);
+  width: 467px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #2c2c2c;
+  opacity: 0.8;
+  line-height: 1.3;
+}
+.footer-name a {
+  color: #2c2c2c;
+  text-decoration: underline;
+}
+.footer-disclaimer {
+  position: absolute;
+  top: 86px;
+  left: calc(50% - 380px);
+  width: 697px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #707070;
+  line-height: 1.3;
+}
+
+/* ===== TILDA BRANDING ===== */
+.tilda-brand {
+  background: #fff;
+  padding: 14px 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #aaa;
+  border-top: 1px solid #eee;
+}
+.tilda-brand img { width: 30px; height: 30px; }
+
+/* ===== MOBILE ===== */
+@media screen and (max-width: 760px) {
+  /* Сдвиг вниз — половина прежнего */
+  .section-hero { height: auto; min-height: 384px; padding-bottom: 20px; margin-top: 12.5vh; }
+
+  .s1-topbar-bg {
+    top: 20px;
+    left: calc(50% - 175px);
+    width: 350px;
+    height: 24px;
+    border-radius: 8px;
+  }
+  .s1-topbar-text {
+    top: 25px;
+    left: calc(50% - 165px);
+    font-size: 11px;
+    white-space: normal;
+    width: 330px;
+    text-align: center;
+  }
+  .s1-card-bg {
+    top: 120px;
+    left: calc(50% - 175px);
+    width: 350px;
+    height: 180px;
+  }
+  .s1-title {
+    top: 53px;
+    left: calc(50% - 165px);
+    width: 280px;
+    font-size: 16.5px;
+    line-height: 1.4;
+  }
+  /* Пилюли h=45, иконки 18px (–10%) */
+  .s1-fc1 { top: 132px; left: calc(50% - 165px); width: 270px; height: 45px; z-index: 3; }
+  .s1-fi1 { top: 145px; left: calc(50% - 157px); width: 18px; z-index: 3; }
+  .s1-ft1 { top: 139px; left: calc(50% - 135px); width: 255px; font-size: 11px; line-height: 1.4; z-index: 3; }
+
+  .s1-fc2 { top: 187px; left: calc(50% - 165px); width: 270px; height: 45px; z-index: 3; }
+  .s1-fi2 { top: 200px; left: calc(50% - 157px); width: 18px; z-index: 3; }
+  .s1-ft2 { top: 194px; left: calc(50% - 135px); width: 255px; font-size: 11px; line-height: 1.4; z-index: 3; }
+
+  .s1-fc3 { top: 242px; left: calc(50% - 165px); width: 270px; height: 45px; z-index: 6; }
+  .s1-fi3 { top: 255px; left: calc(50% - 157px); width: 18px; z-index: 7; }
+  .s1-ft3 { top: 249px; left: calc(50% - 135px); width: 255px; font-size: 11px; line-height: 1.4; z-index: 7; }
+
+  /* Фото ещё +5% (127×170, пропорции сохранены), прижато к низу карточки */
+  .s1-photo {
+    top: 130px;
+    left: calc(50% + 40px);
+    width: 127px;
+    height: 170px;
+    z-index: 5;
+  }
+  .s1-cta {
+    top: 318px;
+    left: calc(50% - 175px);
+    width: 350px;
+    font-size: 13.2px;
+  }
+  .section-footer { height: 100px; }
+  .footer-name { top: 20px; left: 20px; width: calc(100% - 40px); font-size: 10px; }
+  .footer-disclaimer { top: 51px; left: 20px; width: calc(100% - 40px); font-size: 8px; }
+  .quiz-content { padding: 20px 20px 16px; }
+  .quiz-question { font-size: 18px; }
+  .quiz-footer-bar { padding: 14px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO SECTION ===== -->
+<div class="section-hero">
+
+  <!-- Top bar background -->
+  <div class="el s1-topbar-bg"></div>
+
+  <!-- Main card background -->
+  <div class="el s1-card-bg"></div>
+
+  <!-- Top bar text -->
+  <div class="el s1-topbar-text">Система, которую используют твои конкуренты 😉</div>
+
+  <!-- Main title -->
+  <div class="el s1-title">
+    <span style="color: rgb(224, 78, 58);">+10~15 целевых заявок в день</span><br>
+    <span style="color: rgb(94, 51, 36);">на установку септиков</span>
+  </div>
+
+  <!-- Feature card 1 -->
+  <div class="el s1-fc1"></div>
+  <div class="el s1-fi1">
+    <img src="https://optim.tildacdn.com/tild3337-3330-4437-a434-663730663739/-/resize/72x/-/format/webp/contract.png.webp" alt="">
+  </div>
+  <div class="el s1-ft1"><strong>Целевые лиды</strong>, которые прошли<br>квалификацию по бюджету и сроку</div>
+
+  <!-- Feature card 2 -->
+  <div class="el s1-fc2"></div>
+  <div class="el s1-fi2">
+    <img src="https://optim.tildacdn.com/tild6466-3564-4265-b133-373031646663/-/resize/72x/-/format/webp/Frame_44173.png.webp" alt="">
+  </div>
+  <div class="el s1-ft2">Привлекаем тех, кто рассматривает<br>установку в <strong>ближайший месяц</strong></div>
+
+  <!-- Feature card 3 -->
+  <div class="el s1-fc3"></div>
+  <div class="el s1-fi3">
+    <img src="https://optim.tildacdn.com/tild6566-3737-4264-a539-383033343037/-/resize/72x/-/format/webp/Frame_44175.png.webp" alt="">
+  </div>
+  <div class="el s1-ft3"><strong>Без тестов и слива бюджета</strong>, рабочая<br>система, которая запускается за 1 день</div>
+
+  <!-- Photo -->
+  <div class="el s1-photo">
+    <img src="расим.png" alt="Расим">
+  </div>
+
+  <!-- CTA text -->
+  <div class="el s1-cta">
+    <span style="color: rgb(255, 255, 255); background-color: rgb(224, 78, 58); padding: 1px 4px;">ответьте на 4 вопроса</span> и узнайте, сколько клиентов получите в первую неделю 👇
+  </div>
+
+</div>
+
+<!-- ===== QUIZ SECTION ===== -->
+<div class="section-quiz">
+  <div class="quiz-col">
+    <div class="quiz-card">
+      <div class="quiz-header"></div>
+      <div class="quiz-progressbar-wrap">
+        <div class="quiz-progress" id="quiz-progress-bar"></div>
+      </div>
+      <div class="quiz-content">
+
+        <!-- Step 1 -->
+        <div class="quiz-step-screen active" id="step-0">
+          <div class="quiz-question">Сколько объектов готовы делать в месяц?</div>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="10-15">
+              <span class="radio-ind"></span>
+              <span>10-15</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="15-20">
+              <span class="radio-ind"></span>
+              <span>15-20</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="20-25">
+              <span class="radio-ind"></span>
+              <span>20-25</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="30+">
+              <span class="radio-ind"></span>
+              <span>30+</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="quiz-step-screen" id="step-1">
+          <div class="quiz-question">А сколько делаете сейчас?</div>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="до 10">
+              <span class="radio-ind"></span>
+              <span>до 10</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="10-15">
+              <span class="radio-ind"></span>
+              <span>10-15</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="15-20">
+              <span class="radio-ind"></span>
+              <span>15-20</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="20-30">
+              <span class="radio-ind"></span>
+              <span>20-30</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="quiz-step-screen" id="step-2">
+          <div class="quiz-question">Где удобнее общаться?</div>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="Max">
+              <span class="radio-ind"></span>
+              <span>Max</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="Telegram">
+              <span class="radio-ind"></span>
+              <span>Telegram</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="WhatsApp">
+              <span class="radio-ind"></span>
+              <span>WhatsApp</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="quiz-step-screen" id="step-3">
+          <div class="quiz-question">Напишите номер телефона</div>
+          <div class="quiz-options" style="grid-template-columns:1fr;">
+            <div class="phone-input-wrap">
+              <div class="phone-flag">
+                <span>🇷🇺</span>
+                <span>+7</span>
+              </div>
+              <input type="tel" class="phone-input" placeholder="(000) 000-00-00" id="phone-input">
+            </div>
+          </div>
+        </div>
+
+        <!-- Success -->
+        <div class="quiz-step-screen" id="step-success">
+          <div class="quiz-question" style="text-align:center; padding: 20px 0;">
+            ✅ Спасибо! Мы свяжемся с вами в ближайшее время.
+          </div>
+        </div>
+
+      </div>
+      <div class="quiz-footer-bar">
+        <span class="quiz-step-label" id="step-label">Шаг 1/4</span>
+        <div class="quiz-nav-buttons">
+          <button class="btn-prev" id="btn-prev" onclick="quizPrev()">&#8592;</button>
+          <button class="btn-next" id="btn-next" onclick="quizNext()">Далее &nbsp;&#8594;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="section-footer">
+  <div class="footer-name">
+    Чистякова С. М., ИНН 165802355150<br>
+    <a href="#">Политика конфиденциальности</a>
+  </div>
+  <div class="footer-disclaimer">
+    Любая информация, представленная на данном сайте, носит исключительно информационный характер и ни при каких условиях не является публичной офертой, определяемой положениями статьи 437 ГК РФ
+  </div>
+</div>
+
+
+<script>
+var currentStep = 0;
+var totalSteps = 4;
+
+function updateQuiz() {
+  document.querySelectorAll('.quiz-step-screen').forEach(function(el) {
+    el.classList.remove('active');
+  });
+  if (currentStep >= totalSteps) {
+    document.getElementById('step-success').classList.add('active');
+    document.getElementById('quiz-footer-bar') && (document.getElementById('quiz-footer-bar').style.display = 'none');
+    document.querySelector('.quiz-footer-bar').style.display = 'none';
+    return;
+  }
+  document.getElementById('step-' + currentStep).classList.add('active');
+  document.getElementById('step-label').textContent = 'Шаг ' + (currentStep + 1) + '/4';
+  var pct = ((currentStep + 1) / totalSteps) * 100;
+  document.getElementById('quiz-progress-bar').style.width = pct + '%';
+  document.getElementById('btn-prev').style.opacity = currentStep === 0 ? '0.3' : '1';
+  document.getElementById('btn-prev').disabled = currentStep === 0;
+
+  if (currentStep === totalSteps - 1) {
+    document.getElementById('btn-next').textContent = 'Отправить';
+  } else {
+    document.getElementById('btn-next').innerHTML = 'Далее &nbsp;&#8594;';
+  }
+}
+
+function quizNext() {
+  if (currentStep < totalSteps - 1) {
+    currentStep++;
+    updateQuiz();
+  } else {
+    // Submit
+    currentStep = totalSteps;
+    updateQuiz();
+  }
+}
+
+function quizPrev() {
+  if (currentStep > 0) {
+    currentStep--;
+    updateQuiz();
+  }
+}
+
+updateQuiz();
+</script>
+
+</body>
+</html>
