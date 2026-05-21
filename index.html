@@ -269,6 +269,21 @@ html { overflow-x: hidden; }
 }
 .quiz-option:hover .radio-ind { border-color: #e0402a; }
 
+.quiz-warning {
+  background: #ffe9e6;
+  color: #c92a13;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  max-height: 0;
+  padding: 0 40px;
+  overflow: hidden;
+  transition: max-height 0.25s ease, padding 0.25s ease;
+}
+.quiz-warning.visible {
+  max-height: 60px;
+  padding: 10px 40px;
+}
 .quiz-footer-bar {
   display: flex;
   align-items: center;
@@ -697,6 +712,7 @@ html { overflow-x: hidden; }
         </div>
 
       </div>
+      <div class="quiz-warning" id="quiz-warning"></div>
       <div class="quiz-footer-bar">
         <span class="quiz-step-label" id="step-label">Шаг 1/4</span>
         <div class="quiz-nav-buttons">
@@ -723,6 +739,29 @@ html { overflow-x: hidden; }
 <script>
 var currentStep = 0;
 var totalSteps = 4;
+var warnTimer = null;
+
+function getSelectedRadio() {
+  var step = document.getElementById('step-' + currentStep);
+  if (!step) return null;
+  return step.querySelector('input[type="radio"]:checked');
+}
+
+function showWarning(msg) {
+  var w = document.getElementById('quiz-warning');
+  if (!w) return;
+  w.textContent = msg;
+  w.classList.add('visible');
+  clearTimeout(warnTimer);
+  warnTimer = setTimeout(function() { w.classList.remove('visible'); }, 3000);
+}
+
+function hideWarning() {
+  var w = document.getElementById('quiz-warning');
+  if (!w) return;
+  w.classList.remove('visible');
+  clearTimeout(warnTimer);
+}
 
 function updateQuiz() {
   document.querySelectorAll('.quiz-step-screen').forEach(function(el) {
@@ -730,8 +769,8 @@ function updateQuiz() {
   });
   if (currentStep >= totalSteps) {
     document.getElementById('step-success').classList.add('active');
-    document.getElementById('quiz-footer-bar') && (document.getElementById('quiz-footer-bar').style.display = 'none');
     document.querySelector('.quiz-footer-bar').style.display = 'none';
+    document.getElementById('quiz-warning').style.display = 'none';
     return;
   }
   document.getElementById('step-' + currentStep).classList.add('active');
@@ -746,26 +785,33 @@ function updateQuiz() {
   } else {
     document.getElementById('btn-next').innerHTML = 'Далее &nbsp;&#8594;';
   }
+  hideWarning();
 }
 
 function quizNext() {
-  if (currentStep < totalSteps - 1) {
-    currentStep++;
-    updateQuiz();
-  } else {
-    // Отправка телефона — последний шаг
-    var phoneEl = document.getElementById('phone-input');
-    var phone = phoneEl ? phoneEl.value.trim() : '';
-    if (phone.length < 10) {
-      phoneEl && phoneEl.focus();
+  // Радио-шаги (0, 1, 2)
+  if (currentStep < 3) {
+    if (!getSelectedRadio()) {
+      showWarning('Пожалуйста, выберите вариант ответа');
       return;
     }
-    if (typeof ym !== 'undefined') {
-      ym(109351558, 'reachGoal', 'phone_submitted', { phone: phone });
-    }
-    currentStep = totalSteps;
+    currentStep++;
     updateQuiz();
+    return;
   }
+  // Телефон (шаг 3)
+  var phoneEl = document.getElementById('phone-input');
+  var phone = phoneEl ? phoneEl.value.trim() : '';
+  if (phone.length < 10) {
+    showWarning('Пожалуйста, введите корректный номер телефона');
+    phoneEl && phoneEl.focus();
+    return;
+  }
+  if (typeof ym !== 'undefined') {
+    ym(109351558, 'reachGoal', 'phone_submitted', { phone: phone });
+  }
+  currentStep = totalSteps;
+  updateQuiz();
 }
 
 function quizPrev() {
@@ -774,6 +820,27 @@ function quizPrev() {
     updateQuiz();
   }
 }
+
+// Автопереход на следующий вопрос при выборе варианта (только для шагов 0-2)
+document.addEventListener('DOMContentLoaded', function() {
+  for (var s = 0; s < 3; s++) {
+    var step = document.getElementById('step-' + s);
+    if (!step) continue;
+    var radios = step.querySelectorAll('input[type="radio"]');
+    radios.forEach(function(r) {
+      r.addEventListener('change', function() {
+        hideWarning();
+        var capturedStep = currentStep;
+        setTimeout(function() {
+          if (currentStep === capturedStep && currentStep < 3 && getSelectedRadio()) {
+            currentStep++;
+            updateQuiz();
+          }
+        }, 280);
+      });
+    });
+  }
+});
 
 updateQuiz();
 </script>
