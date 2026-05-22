@@ -429,6 +429,51 @@ html { overflow-x: hidden; }
   outline: none;
 }
 
+/* Consent checkbox */
+.consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 14px;
+  user-select: none;
+}
+.consent-label input[type="checkbox"] { display: none; }
+.consent-check-ind {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #fe634e;
+  border-radius: 4px;
+  flex-shrink: 0;
+  position: relative;
+  transition: background 0.15s;
+  margin-top: 1px;
+}
+.consent-label input:checked ~ .consent-check-ind {
+  background: #fe634e;
+}
+.consent-label input:checked ~ .consent-check-ind::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.consent-text {
+  font-size: 12px;
+  color: #6b6b6b;
+  line-height: 1.45;
+}
+.consent-text a {
+  color: #fe634e;
+  text-decoration: underline;
+}
+.consent-text a:hover { text-decoration: none; }
+
 /* ===== FOOTER ===== */
 .section-footer {
   position: relative;
@@ -695,6 +740,16 @@ html { overflow-x: hidden; }
               </div>
               <input type="tel" class="phone-input" placeholder="(000) 000-00-00" id="phone-input">
             </div>
+            <label class="consent-label">
+              <input type="checkbox" id="consent-checkbox" checked>
+              <span class="consent-check-ind"></span>
+              <span class="consent-text">
+                Нажимая «Отправить», я соглашаюсь с
+                <a href="policy-privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a>
+                и даю согласие на
+                <a href="policy-data.html" target="_blank" rel="noopener">обработку персональных данных</a>
+              </span>
+            </label>
           </div>
         </div>
 
@@ -806,6 +861,11 @@ function quizNext() {
   if (phone.length < 10) {
     showWarning('Пожалуйста, введите корректный номер телефона');
     phoneEl && phoneEl.focus();
+    return;
+  }
+  var consent = document.getElementById('consent-checkbox');
+  if (consent && !consent.checked) {
+    showWarning('Необходимо согласие на обработку персональных данных');
     return;
   }
   if (typeof ym !== 'undefined') {
