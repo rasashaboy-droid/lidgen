@@ -14,3 +14,6 @@ photo-fix.png
 photo-fixed.png
 photo-no-crop.png
 photo-bigger-left.png
+
+# отдельная фоновая функция, не публикуется
+yc-function-mailwatcher/

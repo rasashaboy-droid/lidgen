@@ -647,6 +647,10 @@ html { overflow-x: hidden; }
 <div class="section-quiz">
   <div class="quiz-col">
     <div class="quiz-card">
+      <!-- honeypot: реальные пользователи не видят, боты заполнят -->
+      <input type="text" name="website" id="hp-website" tabindex="-1" autocomplete="off"
+             aria-hidden="true"
+             style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
       <div class="quiz-header"></div>
       <div class="quiz-progressbar-wrap">
         <div class="quiz-progress" id="quiz-progress-bar"></div>
@@ -793,9 +797,11 @@ html { overflow-x: hidden; }
 
 
 <script>
+var FORM_ENDPOINT = 'https://functions.yandexcloud.net/d4easkja8t3r13lnc538';
 var currentStep = 0;
 var totalSteps = 4;
 var warnTimer = null;
+var submitting = false;
 
 function getSelectedRadio() {
   var step = document.getElementById('step-' + currentStep);
@@ -868,11 +874,38 @@ function quizNext() {
     showWarning('Необходимо согласие на обработку персональных данных');
     return;
   }
-  if (typeof ym !== 'undefined') {
-    ym(109351558, 'reachGoal', 'phone_submitted', { phone: phone });
-  }
-  currentStep = totalSteps;
-  updateQuiz();
+  if (submitting) return;
+  submitting = true;
+
+  var q1 = (document.querySelector('input[name="q1"]:checked') || {}).value || '';
+  var q2 = (document.querySelector('input[name="q2"]:checked') || {}).value || '';
+  var q3 = (document.querySelector('input[name="q3"]:checked') || {}).value || '';
+  var hp = (document.getElementById('hp-website') || {}).value || '';
+
+  var btn = document.getElementById('btn-next');
+  var btnPrevText = btn.innerHTML;
+  btn.innerHTML = 'Отправка…';
+
+  fetch(FORM_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ phone: phone, q1: q1, q2: q2, q3: q3, website: hp }),
+  })
+  .then(function(r) { return r.json().catch(function(){ return { ok: r.ok }; }); })
+  .then(function(res) {
+    if (!res || res.ok === false) throw new Error((res && res.error) || 'send failed');
+    if (typeof ym !== 'undefined') {
+      ym(109351558, 'reachGoal', 'phone_submitted', { phone: phone });
+    }
+    currentStep = totalSteps;
+    updateQuiz();
+  })
+  .catch(function(err) {
+    console.error(err);
+    showWarning('Не удалось отправить заявку. Попробуйте ещё раз или напишите нам.');
+    btn.innerHTML = btnPrevText;
+    submitting = false;
+  });
 }
 
 function quizPrev() {

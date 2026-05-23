@@ -1,0 +1,9 @@
+{
+  "name": "lidgen-mail",
+  "version": "1.0.0",
+  "description": "Yandex Cloud Function: receives quiz form data and sends email via SMTP",
+  "main": "index.js",
+  "dependencies": {
+    "nodemailer": "^6.9.14"
+  }
+}
