@@ -1,6 +1,7 @@
 .claude/
 .playwright-mcp/
 *.txt
+!robots.txt
 mobile-*.png
 photo-*.png
 pills-*.png
